@@ -84,8 +84,8 @@ public class StudentServiceImpl implements StudentServiceInterface {
             System.out.println("Course not found");
         }else {
             studentDao.deleteStudentFromCourse(studentId, courseId);
-            //System.out.println("Student: <"+studentId+"> deleted from course: <"+courseId+">");
-            System.out.println("Student: <STUDENT ID> deleted from course: <COURSE ID>");
+            System.out.println("Student: <"+studentId+"> deleted from course: <"+courseId+">");
+            //System.out.println("Student: <STUDENT ID> deleted from course: <COURSE ID>");
         }
 
         //YOUR CODE ENDS HERE
@@ -102,8 +102,8 @@ public class StudentServiceImpl implements StudentServiceInterface {
                 System.out.println("Course not found");
             }else {
                 studentDao.addStudentToCourse(studentId, courseId);
-                //System.out.println("Student: <"+studentId+"> deleted from course: <"+courseId+">");
-                System.out.println("Student: <STUDENT ID> added to course: <COURSE ID>");
+                System.out.println("Student: <"+studentId+"> added to course: <"+courseId+">");
+                //System.out.println("Student: <STUDENT ID> added to course: <COURSE ID>");
             }
         }catch (Exception e){
             System.out.println("Student: <STUDENT ID> already enrolled in course: <COURSE ID>");
