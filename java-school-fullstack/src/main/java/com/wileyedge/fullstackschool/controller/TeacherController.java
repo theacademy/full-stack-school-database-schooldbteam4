@@ -16,46 +16,29 @@ public class TeacherController {
 
     @GetMapping("/teachers")
     public List<Teacher> getAllTeachers() {
-        //YOUR CODE STARTS HERE
-
-        return null;
-
-        //YOUR CODE ENDS HERE
+        //pass through to service
+        return teacherServiceImpl.getAllTeachers();
     }
 
     @GetMapping("/{id}")
     public Teacher getTeacherById(@PathVariable int id) {
-        //YOUR CODE STARTS HERE
-
-        return null;
-
-        //YOUR CODE ENDS HERE
+        //pass through: needed to get the id from the url path
+        return teacherServiceImpl.getTeacherById(id);
     }
 
     @PostMapping("/add")
     public Teacher addTeacher(@RequestBody Teacher teacher) {
-        //YOUR CODE STARTS HERE
-
-        return null;
-
-        //YOUR CODE ENDS HERE
+        //teacher object auto created by spring
+        return teacherServiceImpl.addNewTeacher(teacher);
     }
 
     @PutMapping("/{id}")
     public Teacher updateTeacher(@PathVariable int id, @RequestBody Teacher teacher) {
-        //YOUR CODE STARTS HERE
-
-        return null;
-
-        //YOUR CODE ENDS HERE
+        return teacherServiceImpl.updateTeacherData(id, teacher);
     }
 
     @DeleteMapping("/{id}")
     public void deleteTeacher(@PathVariable int id) {
-        //YOUR CODE STARTS HERE
-
-
-
-        //YOUR CODE ENDS HERE
+        teacherServiceImpl.deleteTeacherById(id);
     }
 }
