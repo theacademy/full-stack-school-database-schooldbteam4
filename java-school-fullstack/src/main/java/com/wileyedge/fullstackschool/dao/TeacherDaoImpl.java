@@ -23,8 +23,7 @@ public class TeacherDaoImpl implements TeacherDao {
 
     @Override
     public Teacher createNewTeacher(Teacher teacher) {
-        //YOUR CODE STARTS HERE
-
+        //query string, keyholder to grab the autoassigned id
         final String INSERT_TEACHER = "INSERT INTO Teacher(tFName, tLName, dept) VALUES(?, ?, ?)";
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -43,24 +42,18 @@ public class TeacherDaoImpl implements TeacherDao {
         teacher.setTeacherId(keyHolder.getKey().intValue());
 
         return teacher;
-
-        //YOUR CODE ENDS HERE
     }
 
     @Override
     public List<Teacher> getAllTeachers() {
-        //YOUR CODE STARTS HERE
-
+        //query string, query: uses the mapper to convert sql result -> object
         final String sql = "SELECT * FROM Teacher;";
         return jdbcTemplate.query(sql, new TeacherMapper());
-
-        //YOUR CODE ENDS HERE
     }
 
     @Override
     public Teacher findTeacherById(int id) {
-        //YOUR CODE STARTS HERE
-
+        //return null if teacher not found
         try {
             final String SEL_TEACH_BY_ID = "SELECT * FROM Teacher WHERE tid = ?";
             return jdbcTemplate.queryForObject(SEL_TEACH_BY_ID, new TeacherMapper(), id);
@@ -68,34 +61,29 @@ public class TeacherDaoImpl implements TeacherDao {
         catch (DataAccessException e) {
             return null;
         }
-
-        //YOUR CODE ENDS HERE
     }
 
     @Override
     public void updateTeacher(Teacher t) {
-        //YOUR CODE STARTS HERE
+        //update statement
         final String UPDATE_TEACHER = "UPDATE Teacher SET "
                 + "tFName = ?, "
                 + "tLName = ?, "
                 + "dept = ? "
                 + "WHERE tid = ?;";
 
+        //jdbc template update call
         jdbcTemplate.update(UPDATE_TEACHER,
                 t.getTeacherFName(),
                 t.getTeacherLName(),
                 t.getDept(),
                 t.getTeacherId());
-        //YOUR CODE ENDS HERE
     }
 
     @Override
     public void deleteTeacher(int id) {
-        //YOUR CODE STARTS HERE
-
+        //query string, delete
         final String DELETE_TEACHER = "DELETE FROM Teacher WHERE tid = ?;";
         jdbcTemplate.update(DELETE_TEACHER, id);
-
-        //YOUR CODE ENDS HERE
     }
 }

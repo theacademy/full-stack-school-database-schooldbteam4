@@ -8,8 +8,6 @@ import java.util.List;
 
 @Service
 public class TeacherServiceImpl implements TeacherServiceInterface {
-
-    //YOUR CODE STARTS HERE
     //teacher does not need to directly interface with the other layers
     //it just works on its own entity table - no Foreign key constraints
     @Autowired
@@ -19,20 +17,12 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
         this.teacherDao = teacherDao;
     }
 
-
-    //YOUR CODE ENDS HERE
-
     public List<Teacher> getAllTeachers() {
-        //YOUR CODE STARTS HERE
         //pass through method
-
         return teacherDao.getAllTeachers();
-
-        //YOUR CODE ENDS HERE
     }
 
     public Teacher getTeacherById(int id) {
-        //YOUR CODE STARTS HERE
         //teacher dao will return null if the teacher is not found
         Teacher teach = teacherDao.findTeacherById(id);
 
@@ -42,13 +32,9 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
         }
 
         return teach;
-
-        //YOUR CODE ENDS HERE
     }
 
     public Teacher addNewTeacher(Teacher teacher) {
-        //YOUR CODE STARTS HERE
-
         //program expects teacher to be directly overwritten
         //assumes non-null teacher
 
@@ -69,17 +55,11 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
             hasBlank = true;
         }
 
-
-        //if has blank, return temp, else add to db and return the teacher with id
+        //if has blank, return modified teacher object, else add to db and return the teacher with id
         return (hasBlank) ? teacher : teacherDao.createNewTeacher(teacher);
-
-
-        //YOUR CODE ENDS HERE
     }
 
     public Teacher updateTeacherData(int id, Teacher teacher) {
-        //YOUR CODE STARTS HERE
-
         //not match string
         final String NOT_MATCH = "IDs do not match, teacher not updated";
 
@@ -94,15 +74,10 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
         //ids match, run the update, return updated teacher
         teacherDao.updateTeacher(teacher);
         return teacher;
-
-        //YOUR CODE ENDS HERE
     }
 
     public void deleteTeacherById(int id) {
-        //YOUR CODE STARTS HERE
         //pass through method: calls the dao
         teacherDao.deleteTeacher(id);
-
-        //YOUR CODE ENDS HERE
     }
 }
