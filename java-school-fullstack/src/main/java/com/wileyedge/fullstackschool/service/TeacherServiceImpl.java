@@ -100,8 +100,8 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
 
     public void deleteTeacherById(int id) {
         //YOUR CODE STARTS HERE
-
-
+        //pass through method: calls the dao
+        teacherDao.deleteTeacher(id);
 
         //YOUR CODE ENDS HERE
     }
